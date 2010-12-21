@@ -4,11 +4,18 @@ Based on [us_states plugin](http://svn.techno-weenie.net/projects/plugins/us_sta
 
 This project has been extended to be available as either a plugin or a gem and is now targeting Rails 3.
 The states selection has been made more flexible in order to support multiple countries and regions in the world (USA, Canada, ...). 
-The select tag now takes a new :region option which currently supports either :usa, :canada and :australia with :usa as the default if the option is not set.
+The select tag now takes a new :region option which currently supports the following:
+* :usa
+* :canada 
+* :australia  
 
-Please help provide states for other regions/countries, fx EU, Africa, South America, ...
+_Note:_ :usa is the default region if the :region option is not set.
 
-## Install Rails 3
+Please help provide states for other regions/countries, fx EU, Africa, South America, ... 
+
+_Note:_ 22 Dec. 2010, currently proof of concept and has not been fully tested. Guiney pigs wanted!
+
+## Install in Rails 3 app
 
 In Gemfile
 <pre>
