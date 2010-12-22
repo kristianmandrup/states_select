@@ -44,6 +44,8 @@ It would be nice to also have the option to use an autocomplete field instead of
 
 [rails3 jquery autocomplete](https://github.com/crowdint/rails3-jquery-autocomplete)
 
+I have started to add YAML support to the autocomplete here [jquery autocomplete with yaml support](https://github.com/kristianmandrup/rails3-jquery-autocomplete)
+
 ## Install in Rails 3 app
 
 In Gemfile
