@@ -3,28 +3,14 @@ class China
     def self.names 
       [
         ["Anhui", "AN"], ["Fujian", "FU"], ["Gansu", "GA"],
-        ["Guangdong", "GG"], ["Guizhou", "GU"], ["Hainan", "HA"], ["Hebei", "HI"]
+        ["Guangdong", "GG"], ["Guizhou", "GU"], ["Hainan", "HA"], ["Hebei", "HI"],
+        ["Heilongjiang", "HG"], ["Henan", "HN"], ["Hunan", "HU"], ["Hubei", "HB"],
+        ["Jiangxi", "JI"], ["Jilin", "JN"], ["Jiangsu", "JU"], ["Liaoning", "LG"],        
+        ["Qinghai", "QI"], ["Sichuan", "SI"], ["Shanxi", "SN"], ["Shandong", "SG"],
+        ["Shaanxi", "SH"], ["Taiwan", "TA"], ["Yunnan", "YU"], ["Zhejiang", "ZH"]
       ]
     end
   end
 end
 
-# TODO
-
-# hg: Heilongjiang
-# hn: Henan
-# hu: Hunan
-# hu: Hubei
-# ji: Jiangxi
-# jn: Jilin
-# ju: Jiangsu
-# lg: Liaoning
-# qi: Qinghai
-# si: Sichuan
-# sn: Shanxi
-# sg: Shandong
-# sh: Shaanxi
-# ta: Taiwan
-# yu: Yunnan
-# zh: Zhejiang
 

@@ -13,7 +13,8 @@ class StatesSelect
       country = country_state_options[:region] || country_state_options[:locale] || :usa
       begin
         return load_locale country, lang if country_state_options[:locale]
-        send :"#{country}_states"
+        method = "#{country}_states".to_sym
+        send(method) if respond_to? method
       rescue
         raise ArgumentError, "Country #{country} is not currently supported for this state plugin"
       end
@@ -42,7 +43,6 @@ class StatesSelect
     def china_states
       require 'states_select/locales/china'
       China::Provinces.names
-      puts "China provinces are not yet complete, please help ;)"
     end
 
     def locale_file name
