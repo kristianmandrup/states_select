@@ -34,6 +34,17 @@ class StatesSelect
       Australia::Provinces.names
     end
 
+    def india_states
+      require 'states_select/locales/india'
+      India::States.names
+    end
+
+    def china_states
+      require 'states_select/locales/china'
+      China::Provinces.names
+      puts "China provinces are not yet complete, please help ;)"
+    end
+
     def locale_file name
       File.join(Rails.root, 'config', 'locales', name)
     end

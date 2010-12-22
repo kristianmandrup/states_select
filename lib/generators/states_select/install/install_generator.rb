@@ -24,7 +24,7 @@ module StatesSelect
       end
       
       def valid_locales
-        [:usa, :canada, :australia, :india]
+        [:usa, :canada, :australia, :india, :china]
       end
   
       def copy_locales
