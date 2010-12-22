@@ -13,7 +13,32 @@ _Note:_ :usa is the default region if the :region option is not set.
 
 Please help provide states for other regions/countries, fx EU, Africa, South America, ... 
 
-_Note:_ 22 Dec. 2010, currently proof of concept and has not been fully tested. Guiney pigs wanted!
+_Note:_ 22 Dec. 2010
+
+Currently this is mainly proof of concept and has not been fully tested. Guiney pigs wanted!
+Following up on a suggestion by _asanghi_, I have added a generator to copy yml locale files for one or more "locales" (usa, canada, australia).
+The gem now needs to be updated with an option to use these locale files instead of the hardcoded class methods.
+
+## Locale files
+
+To use the locale files use the :locale option instead of the region. 
+
+<pre>
+  <%= state_select 'child', 'state', :locale => :usa %> 
+</pre>
+
+You can even provide different locale translations and use the :lang option.
+The following example should use the Chinese locale file of states for USA.
+
+<pre>
+  <%= state_select 'child', 'state', :locale => :usa, :lang => 'cn' %> 
+</pre>
+           
+PS: Has not yet been tested!
+
+## TODO
+
+Add RSpec 2 tests, including use of *generator-spec* to test the generator and *rspec-action_view* to test the view helpers with various Form builders?. 
 
 ## Install in Rails 3 app
 

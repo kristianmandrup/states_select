@@ -5,19 +5,8 @@ module ActionView
         state_options      = ""
         priority_states    = lambda { |state| country_state_options[:priority].include?(state.last) }
         country_state_options[:show] = :full if country_state_options[:with_abbreviation]
-        
-        country = country_state_options[:region] || :usa
-        
-        country_states = case country
-        when :usa          
-          usa_states
-        when :canada          
-          canada_provinces
-        when :australia          
-          australia_provinces
-        else
-          raise ArgumentError, "Country #{country} is not currently supported for this state plugin"
-        end          
+                
+        country_states = load_states country_state_options
         
         states_label = case country_state_options[:show]
           when :full_abb          then lambda { |state| [state.first, state.last] }
@@ -54,20 +43,40 @@ module ActionView
       end
 
       private
+
+      def load_states country_state_options = {}
+        lang = country_state_options[:lang] || 'en'        
+        country = country_state_options[:region] || country_state_options[:locale] || :usa
+        begin
+          return load_locale country, lang if country_state_options[:locale]
+          send :"#{country}_states"
+        rescue
+          raise ArgumentError, "Country #{country} is not currently supported for this state plugin"
+        end
+      end
       
       def usa_states
         require 'states_select/usa'
         USA::States.names
       end
 
-      def canada_provinces
+      def canada_states
         require 'states_select/canada'
         Canada::Provinces.names
       end
 
-      def australia_provinces
+      def australia_states
         require 'states_select/australia'
         Australia::Provinces.names
+      end
+
+      def locale_file name
+        File.join(Rails.root, 'config', 'locales', name)
+      end
+      
+      def load_locale name, lang = 'en'
+        content = YAML::load locale_file "#{name}.#{lang}.yml")
+        content[name]
       end
     end
 
