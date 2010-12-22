@@ -11,18 +11,15 @@ The select tag now takes a new :region option which currently supports the follo
 * :australia
 * :india  
 
-_Note:_ :usa is the default region if the :region option is not set.
+:usa is the default region if either the :region or :locale option is not set (see usage below).
 
 Please help provide states for other regions/countries, fx EU, Africa, South America, ... 
 
 _Note:_ 22 Dec. 2010
 
-Currently this is mainly proof of concept and has not been fully tested. Testers wanted!
+Currently this is mainly proof of concept and has not been fully tested. 
 
-Following up on a suggestion by _asanghi_, I have added a generator to copy yml locale files for one or more "locales" (usa, canada, australia).
-The gem now needs to be updated with an option to use these locale files instead of the hardcoded class methods.
-
-## Locale files
+## Using locale files
 
 To use the locale files use the :locale option instead of the region. 
 
@@ -37,11 +34,15 @@ The following example should use the Chinese locale file of states for USA.
   <%= state_select 'child', 'state', :locale => :usa, :lang => 'cn' %> 
 </pre>
            
-PS: Has not yet been tested!
+PS: This functionality has not yet been tested!
 
 ## TODO
 
 Add RSpec 2 tests, including use of *generator-spec* to test the generator and *rspec-action_view* to test the view helpers with various Form builders?. 
+
+It would be nice to also have the option to use an autocomplete field instead of a selector. This gem could come in handy!
+
+[rails3 jquery autocomplete](https://github.com/crowdint/rails3-jquery-autocomplete)
 
 ## Install in Rails 3 app
 

@@ -1,4 +1,4 @@
-require 'states_select/builders/form_builder'
+require 'states_select/builders'
 
 class StatesSelect
   class << self
