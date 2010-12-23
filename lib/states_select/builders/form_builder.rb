@@ -1,6 +1,8 @@
+require 'rails3-jquery-autocomplete'
+
 module ActionView
   module Helpers
-    module FormOptionsHelper
+    module FormOptionsHelper            
       def state_options_for_select(selected = nil, country_state_options = {})
         state_options      = ""
         priority_states    = lambda { |state| country_state_options[:priority].include?(state.last) }
@@ -42,6 +44,12 @@ module ActionView
         InstanceTag.new(object, method, self, options.delete(:object)).to_state_select_tag(country_state_options, options, html_options)
       end
 
+      extend Rails3JQueryAutocomplete::ClassMethods
+
+      # creates autocomplete methods
+      [:usa, :canada, :australia, :india, :china].each do |locale|
+        autocomplete_yaml :"#{locale}_states", "locales/#{locale}.#{lang}.yml", locale, :type => :key_value
+      end
     end
 
     class InstanceTag #:nodoc:
@@ -63,7 +71,13 @@ module ActionView
       end
     end
     
-    class FormBuilder
+    class FormBuilder 
+      
+      def autocomplete_states locale, options = {} 
+        lang = options[:lang] || 'en'
+        @template.send :"autocomplete_#{locale}_states"
+      end
+      
       def state_select(method, country_state_options = {}, options = {}, html_options = {})
         @template.state_select(@object_name, method, country_state_options, options.merge(:object => @object), html_options)
       end
